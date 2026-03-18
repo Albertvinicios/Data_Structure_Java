@@ -3,7 +3,7 @@ public class TesteNo {
         No no1 = new No(10);
         No no2 = new No(20);
 
-        // no2 = no1; cuidado, vc perde a referencia do conteúdo antigo do no2
+        // no2 = no1; cuidado, voce perde a referencia do conteúdo antigo do no2
 
         no1.setProximo(no2);
         no1.getProximo().setInfo(77);

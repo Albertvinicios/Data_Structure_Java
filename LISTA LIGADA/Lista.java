@@ -91,16 +91,18 @@ public class Lista {
     return -1; // não encontrou
     }
 
-    public int contarApos(int x){ //Método da disgraça da prova!!
-        if(estaVazia()){ //achei que tinha acertado essa, mas sou um merda!
-            return 0; //programação bate na minha cara e me chama de quenga!
-        }else{ //vai aprender java Vacilão.
-            int cont = 0; //até de café parei de gostar!
-            int pos = 1; //quer fazer faculdade de graça né, melhor pagar e passar.
-            No atual = primeiro; //unisquina tão formado e você ai, fazendo Estrutura denovo.
-            while(atual != null && pos < x){ //a porra do looping é com & animal, qual seu problema?
+    public int contarApos(int x){ //método para contar quantos elementos existem após a posição do valor x 
+        if(estaVazia()){  //se estiver vazia, não tem o que contar
+            return 0; //retorna 0
+        }else{ //se não
+            int cont = 0; //inicia o contador em 0 
+            int pos = 1; //na posição 1 do índice, ou seja, o primeiro elemento da lista
+            No atual = primeiro;  //atual recebe o primeiro da lista para percorrer sem danificar o primeiro
+            while(atual != null && pos < x){ //percorrer a lista até chegar na posição do valor x
+            //ou seja, enquanto o atual for diferente de null e a posição for menor que x
                 atual = atual.getProximo(); //é assim que passa para o próximo da lista.
-                pos++; //como verificar a posição sem contar a posição seu inútil.
+                pos++; //a posição vai contando até chegar na posição do valor x
+                //ou seja, o índice do valor x
             }
             if(atual == null){ //se passar do número desejado, a posição não existe.
                 System.out.println("Posição maior do que a lista");
@@ -108,7 +110,7 @@ public class Lista {
                 atual = atual.getProximo(); //ai você tinha que lembrar de passar para o próximo da lista.
                 while(atual != null){ //fazendo looping denovo.
                     atual = atual.getProximo(); 
-                    ++cont; //e ai sim contando a merda da posição.
+                    ++cont; //e ai sim contando a posição
                 }
             }
         return cont; //pra só aqui retornar.
