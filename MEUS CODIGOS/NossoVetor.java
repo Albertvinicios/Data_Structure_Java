@@ -199,10 +199,10 @@ public class NossoVetor {
 }
 
 //quicksort, é o algoritmo mais rápido, não tem como ser mais rápido,
-// a força está na divisão, na quebra do Vetor, a hora que junta já ordena
+// a força está na divisão, na quebra do Vetor, une já ordenado
 // já o MergeSort quebra na metade e conquista, a combinação dos resultados.
 // na API do Java já vem o MergeSort
-//o problema do QuickSort é o Estouro de Pilha 
+//o problema do QuickSort é o Estouro de Pilha.
 // e o problema do Mergesort é a duplicação do uso de memória, copia cada vez que duplica.
 //back tracking é uma técnica de recursividade, estratégias de uso.
 //problema da N-Rainhas, menor problema é o 4x4, backtrackingum paso atrás para ganhar impulso.

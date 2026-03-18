@@ -1,6 +1,8 @@
 import java.util.Scanner;
 public class TesteOrdenacao {
-    public static void main(String[] args) {
+    public static void main(String[] args) { //para utilizar cada método
+        //é necessário ir apagando as barras de comentários dos outros métodos
+        //organizando a maneira de testar.
         Scanner scanner = new Scanner(System.in); // criação do scanner!
         System.out.print("digite a capacidade do vetor, 0 encerra: ");
         int capacidade = scanner.nextInt(); // escolha da capacidade pelo usuário.

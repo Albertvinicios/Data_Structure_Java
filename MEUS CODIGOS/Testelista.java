@@ -1,5 +1,6 @@
 public class Testelista{
-	public static void main(String[] args){
+	public static void main(String[] args){ //teste lista ligada
+	//onde cada nó tem um valor inteiro e um ponteiro para o próximo nó
 
 		Lista lista = new Lista();
 		System.out.println("Lista criada: "+lista);
