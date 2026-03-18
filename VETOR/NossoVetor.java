@@ -1,22 +1,16 @@
 import java.util.Random;
 
 public class NossoVetor {
-    private int[] v;
-    private int ocupacao;
     private int[] v; //iniciação do vetor na classe Nosso vetor atributo v
     private int ocupacao; //ocupação do vetor
 
     // blocos especiais de construção de objetos
     // 1. padrão
     public NossoVetor() {
-        v = new int[10];
         v = new int[10]; //atribuição da construtor padrão, vetor de tamanho 10
         ocupacao = 0; // por clareza
     }
 
-    public NossoVetor(int capacidade) {
-        v = new int[capacidade];
-        ocupacao = 0;
     public NossoVetor(int capacidade) { //construtor com parâmetro, 
     //onde o usuário pode escolher o tamanho do vetor
         v = new int[capacidade]; //sendo a capacidade
@@ -24,43 +18,29 @@ public class NossoVetor {
     }
 
     // acessa posição vetor
-    public int getPosicaoVetor(int posicao) {
     public int getPosicaoVetor(int posicao) { //acessa posição x
         return v[posicao];
     }
 
     // altera posição do vetor
-    public void setPosicaoVetor(int posicao, int valor) {
-        v[posicao] = valor;
     public void setPosicaoVetor(int posicao, int valor) { //insere o valor na determinada posição
         v[posicao] = valor; //alterando o consteúdo anterior e atribuindo nessa posição um novo valor.
     }
 
     // acessa o vetor
-    public int[] getV() {
     public int[] getV() {//acessa e retorna o vetor V
         return v;
     }
 
-    public boolean estaVazio() {
-        return ocupacao == 0;
-    }
     public boolean estaVazio() { //Método para verificar se o vetor está vazio
         return ocupacao == 0; //verifica se a ocupação está zero, e o retorno é true ou false
     } //sendo a condição de true ser igual a 0, e a de false ser diferente de 0
 
-    public boolean estaCheio() {
-        return ocupacao == v.length;
     public boolean estaCheio() { //método para verificar se o vetor está cheio
         return ocupacao == v.length; //se a ocupação estiver no tamanho do vetor, retorna verdadeiro
         //se não retorna falso.
     }
 
-    public void dobra(){
-        int[] vLocal = new int[v.length * 2];
-        for (int i=0; i<ocupacao; i++){
-            vLocal[i] = v[i];
-            v = vLocal;
     public void dobra(){ //retorno vazio, método para dobrar tamanho do vetor
         int[] vLocal = new int[v.length * 2]; //inicializa um novo vetor de tamanho dobrado
         for (int i=0; i<ocupacao; i++){ //percorre o vetor até a ocupação, 
@@ -71,11 +51,6 @@ public class NossoVetor {
         }
     }
 
-    public void reduzirMetade() {
-        int[] vLocal = new int[v.length / 2];
-        for (int i=0; i < ocupacao; i++){
-            vLocal[i] = v[i];
-            v = vLocal;
     public void reduzirMetade() { //reduz pela metade o tamanho do vetor
         int[] vLocal = new int[v.length / 2]; //inicializa novo vetor, com metade do tamanho de v
         for (int i=0; i < ocupacao; i++){ //percorre o vetor atribuindo os valores anteriores
@@ -84,11 +59,6 @@ public class NossoVetor {
         }
     }
     // faz o redimensionamento do vetor
-    private void redimensiona(int novoTamanho){
-        int[] vLocal = new int[novoTamanho];
-        for (int i = 0; i < ocupacao; i++)
-            vLocal[i] = v[i];
-        v = vLocal;
     private void redimensiona(int novoTamanho){ //definir novo tamanho, passado por parametro
         int[] vLocal = new int[novoTamanho]; //inicializa com novo tamanha recebido
         for (int i = 0; i < ocupacao; i++) // percorre o vetor até a ocupação, ou seja, 
@@ -98,10 +68,6 @@ public class NossoVetor {
     }
 
     // inserir um elemento no vetor
-    public void insereElemento(int elemento) {
-        if (estaCheio())
-            redimensiona(v.length * 2);
-        v[ocupacao++] = elemento;
     public void insereElemento(int elemento) { //elemento passado por parâmetro para ser inserido
         if (estaCheio()) //se estiver cheio, redimensiona para o dobro do tamanho
             redimensiona(v.length * 2); //por garantia.
@@ -110,12 +76,6 @@ public class NossoVetor {
     }
 
     // remover o último elemento, se não estiver vazio
-    public int remove() {
-        if (!estaVazio()) {
-            ocupacao--;
-            if (v.length > 4 && ocupacao <= v.length / 4)
-                redimensiona(v.length / 2);
-            return v[ocupacao];
     public int remove() { //remover elemento
         if (!estaVazio()) { //se não estiver vazio, ou seja, se tiver elementos para remover
             ocupacao--; //reduz a ocupação, ou seja, a posição do último elemento
@@ -124,35 +84,18 @@ public class NossoVetor {
                 redimensiona(v.length / 2); //somente nesse caso, reduz pela metade o tamanho do vetor
             return v[ocupacao]; //retorna o valor do ultimo elemento
         }
-        return -1;
         return -1; //se não tiver elementos para remover, 
         // retorna -1 ou algum valor que indique que não tem elementos
     }
 
     // verificar se um elemento está ou não no vetor: busca simples
-    public boolean contem(int x) {
-        for (int i = 0; i < ocupacao; i++)
-            if (v[i] == x)
     public boolean contem(int x) { //verificar se o elemento x está no vetor
         for (int i = 0; i < ocupacao; i++) //recebe x, e percorre o vetor até a ocupação, ou seja, até onde tem elementos
             if (v[i] == x) //se o vetor em alguma posição encontrar o elemento x, retorna verdadeiro
                 return true;
-        return false;
         return false;//se não retorna false
     }
 
-    public boolean buscaBinaria(int x) {
-        int ini = 0, fim = v.length - 1;
-        while (ini <= fim) {
-            int meio = (ini + fim) / 2;
-            if (x == v[meio])
-                return true;
-            if (x > v[meio])
-                ini = meio + 1;
-            else
-                fim = meio - 1;
-        }
-        return false;
     public boolean buscaBinaria(int x) {//método para busca binária, algoritmo de busca eficiente para vetores ordenados
         int ini = 0, fim = v.length - 1; //define o início e o fim do vetor para a busca
         while (ini <= fim) { //enquando o início for menor ou igual ao fim
@@ -170,32 +113,16 @@ public class NossoVetor {
     }
 
     // devolver o número de elementos na lista
-    public int tamanho() {
     public int tamanho() { //método de buscar o tamanho. 
         return ocupacao;
     }
 
-    public void preencheVetor() {
-        Random random = new Random();
-        for (int i = 0; i < v.length; i++) {
-            v[i] = random.nextInt(v.length * 10);
     public void preencheVetor() { //método de preencher o Vetor
         Random random = new Random(); //utilização do Random para preencher o vetor de forma aleatória
         for (int i = 0; i < v.length; i++) { //perconrrendo o vetor
             v[i] = random.nextInt(v.length * 10); //atribuindo em cada posição do vetor, um valor inteiro 
             //aletório
         }
-        ocupacao = v.length;
-    }
-
-    public void bubbleSort() {
-        for (int i = 1; i < v.length; i++) {
-            for (int j = 0; j < v.length - i; j++) {
-                if (v[j] > v[j + 1]) {
-                    int aux = v[j];
-                    v[j] = v[j + 1];
-                    v[j + 1] = aux;
-                }
         ocupacao = v.length; //retornando ao final o tamanho da ocupação
     }
 
@@ -214,13 +141,6 @@ public class NossoVetor {
         }
     }
 
-    public void selectionSort() {
-        for (int i = 0; i < v.length - 1; i++) {
-            int pos = i;
-            for (int j = i + 1; j < v.length; j++)
-                if (v[j] < v[pos])
-                    pos = j;
-            if (pos != i) {
     public void selectionSort() { //Algoritmo de ordenação Selection Sort 
     // que é um algoritmo simples de ordenação,
         for (int i = 0; i < v.length - 1; i++) { //percorre o vetor até o penúltimo elemento
@@ -238,13 +158,6 @@ public class NossoVetor {
             }
         }
     }
-    int partition (int p, int r) { 
-		int x = v[r];     /* O pivô é o último elemento do vetor */
-        int i = p-1;
-		for(int j = p; j < r; j++) {
-	     	if (v[j] <= x) {
-	            i = i + 1;
-	          	int aux = v[i];
     int partition (int p, int r) { //método para partição do Quick Sort 
     //que é um algoritmo de ordenação eficiente para grandes conjuntos de dados 
 		int x = v[r]; //escolhe o último elemento como pivô, recebeu por parametro
@@ -258,13 +171,6 @@ public class NossoVetor {
                 v[j] = aux;
             }
         }
-        i = i + 1;
-        int aux = v[r]; 
-		v[r] = v[i]; 
-		v[i] = aux;
-		return i;
-    }
-    void quickSort (int p, int r) {
         i = i + 1; //após
         int aux = v[r]; //realiza a troca entre o elemento na posição i e o pivô
 		v[r] = v[i]; //o elemento na posição r recebe o valor do elemento na posição i
@@ -274,27 +180,16 @@ public class NossoVetor {
     void quickSort (int p, int r) { //método para o Quick Sort
     //recebe por parâmetro o índice do início e do fim do vetor
         //System.out.println ("\np = " + p + ", r = " + r);
-        if (p < r) {
-            int q = partition(p, r);
         if (p < r) {  //se o índice do início for menor que o índice do fim
         //ou seja, se tiver elementos para ordenar
             int q = partition(p, r); //realiza a partição do vetor e recebe o índice do pivô.
             //System.out.println ("\nq = " + q);
-            quickSort(p, q-1);
-            quickSort(q+1, r);
             quickSort(p, q-1); //chama recursivamente o Quick Sort
             // para ordenar a sublista à esquerda do pivô
             quickSort(q+1, r); //chama recursivamente o Quick Sort
             //para ordenar a sublista à direita do pivô
         }
     }
-    void insertionSort() {
-        for (int j = 1; j < v.length; ++j) {
-            int x = v[j];
-            int i;
-            for (i = j - 1; i >= 0 && v[i] > x; --i)
-                v[i + 1] = v[i];
-            v[i + 1] = x;
     void insertionSort() { //Algoritmo de ordenação Insertion Sort
     // que é um algoritmo eficiente para pequenos conjuntos de dados
         for (int j = 1; j < v.length; ++j) { //percorre o vetor a partir do segundo elemento
@@ -308,11 +203,6 @@ public class NossoVetor {
         }
     }
 
-    @Override
-    public String toString() {
-        String s = "tamanho = " + v.length + "\nocupacao = " + ocupacao + "\n";
-        for (int i = 0; i < v.length; i++) {
-            s += v[i] + " ";
     @Override //Método de impressão 
     public String toString() { //para mostrar o conteúdo do vetor, a ocupação e o tamanho do vetor
         String s = "tamanho = " + v.length + "\nocupacao = " + ocupacao + "\n"; //inicializa a string
@@ -320,7 +210,6 @@ public class NossoVetor {
         for (int i = 0; i < v.length; i++) { //percorre o vetor para mostrar os elementos
             s += v[i] + " "; //adiciona cada elemento do vetor à string, separado por espaço
         }
-        return s;
         return s; //retorna a string formatada com as informações do vetor.
     }
 }
