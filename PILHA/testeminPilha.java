@@ -1,5 +1,6 @@
 public class testeminPilha {
-    public static void main(String[] args){
+    public static void main(String[] args){ //Método principal
+        //teste da minha Pilha criada com vetor
         minhaPilha p1 = new minhaPilha(10);
         minhaPilha p2 = new minhaPilha();
 

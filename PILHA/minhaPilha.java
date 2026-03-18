@@ -1,4 +1,5 @@
-public class minhaPilha {
+public class minhaPilha { //tentativa de criar minha pilha
+//usando vetor, onde o topo é o último elemento do vetor
     //Atributos
     private int[] vet;
     private int topu;
@@ -24,21 +25,22 @@ public class minhaPilha {
     public void setTopo(int t){ 
         this.topu = t;
     }
-    public boolean estaVazio(){
+    public boolean estaVazio(){ //método se está vazio
         if(topu == -1){
             return true;
         }else{
             return false;
         }
     }
-    public boolean estaCheio(){
+    public boolean estaCheio(){ //método se está cheio
         if (topu == vet.length-1){
             return true;
         }else{
             return false;
         }
     }
-    public boolean meuPush(int element){
+    public boolean meuPush(int element){ //método para adicionar elemento a pilha
+    //onde o elemento é adicionado no topo
         if(estaCheio()){
             return false;
         }else{
@@ -57,7 +59,7 @@ public class minhaPilha {
     public int veriTamanho(){
         return topu+1;
     }
-    @Override
+    @Override //Método de impressão do toString, onde o vetor é impresso do topo para a base
     public String toString(){
         String s = "";
         if(estaVazio()){
